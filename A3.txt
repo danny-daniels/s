@@ -1,0 +1,32 @@
+Title:Provide summary statistics (mean, median, minimum, maximum, standard deviation) for a
+dataset (age, income etc.) with numeric variables grouped by one of the qualitative (categorical)
+variable.
+
+import pandas as pd
+data=pd.read_csv("iris.csv")
+df=pd.DataFrame(data)
+df
+print(df.dtypes)
+#Mean
+print("Mean of Iris dataset \n",df.groupby('species').mean(),"\n")
+#Median
+print("Median of Iris dataset \n",df.groupby('species').median(),"\n")
+#Mode
+print("Mode of Iris dataset \n",df.mode(axis=1, numeric_only=True),"\n") #column
+print("Mode of Iris dataset \n",df.mode(axis=0, numeric_only=False),"\n") #row
+#Standard Deviation
+print("STD of Iris dataset \n",df.groupby('species').std(),"\n")
+#Varience
+print("Variance of Iris dataset \n",df.groupby('species').var(),"\n")
+#Maximum
+print("Max of Iris dataset \n",df.groupby('species').max(),"\n")
+#Minimum
+print("Min of Iris dataset \n",df.groupby('species').min(),"\n")
+
+Theory:
+1.Statistics is a branch of mathematics that deals with collecting, analyzing, interpreting, and visualizing empirical data.
+2.Mean sum of all observations divided by the number of observations.
+3.Mode most frequently occurring value in your data
+4.Median middle value of a data.
+5.Standard Deviation measure of how spread out numbers are,square root of Variance
+6.Varience average of the squared differences from the Mean

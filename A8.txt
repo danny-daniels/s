@@ -1,0 +1,53 @@
+Title:
+1. Use the inbuilt dataset 'titanic'. The dataset contains 891 rows and contains information about
+the passengers who boarded the unfortunate Titanic ship. Use the Seaborn library to see if we can
+find any patterns in the data.
+2. Write a code to check how the price of the ticket (column name: 'fare') for each passenger is
+distributed by plotting a histogram
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+dataset = sns.load_dataset('titanic')
+dataset.head()
+
+sns.distplot(dataset['fare'])
+kde kernel density estimation. You can remove line
+sns.distplot(dataset['fare'], kde=False)
+sns.jointplot(x='age', y='fare', data=dataset)
+sns.rugplot(dataset['fare'])
+sns.barplot(x='sex', y='age', data=dataset)
+sns.countplot(x='sex', data=dataset)
+sns.boxplot(x='sex', y='age', data=dataset)
+sns.violinplot(x='sex', y='age', data=dataset)
+sns.stripplot(x='sex', y='age', data=dataset)
+sns.swarmplot(x='sex', y='age', data=dataset)
+
+#Heat map
+dataset.corr()
+corr = dataset.corr()
+sns.heatmap(corr)
+corr = dataset.corr()
+sns.heatmap(corr, annot=True)
+corr = dataset.corr()
+sns.heatmap(corr)
+
+
+A. Distribution Plots
+a. Dist-Plot: represents the univariate analysis
+b. Joint Plot: represents the biivariate analysis
+d. Rug Plot: draw small bars along the x-axis for each point
+B. Categorical Plots
+a. Bar Plot: display the mean value
+b. Count Plot: displays the count
+c. Box Plot: display the distribution of the categorical data in the form of quartiles.
+d. Violin Plot: statistical representation of numerical data
+C. Advanced Plots
+a. Strip Plot: draws a scatter plot
+b. Swarm Plot: combination of the strip and the violin plots.
+D. Matrix Plots
+a. Heat Map:2d representation of data
+b. Cluster Map
+histogram(histplot) is a graph showing frequency distributions.
+scatter plot how two variables relate to each other

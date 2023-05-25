@@ -1,0 +1,66 @@
+Title: Data Analytics III
+Aim :1. Implement Simple Naïve Bayes classification algorithm using Python/R on iris.csv dataset. 2.Compute Confusion matrix to find TP, FP, TN, FN, Accuracy, Error rate, Precision, Recall on the given dataset.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+data = pd.read_csv("iris.csv")
+data.head()
+data.tail()
+data.shape
+data.info()
+data.describe()
+data.isnull().sum()
+
+X = data.drop(['species'], axis=1)    #Drop species axis=1(column)
+y = data.drop(['sepal_length',  'sepal_width',  'petal_length',  'petal_width'], axis=1)
+print(X)
+print(y)
+print(X.shape)
+print(y.shape) 
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True)
+print(X_train.shape)
+print(X_test.shape)
+print(y_train.shape)
+print(y_test.shape)
+
+#Use Naive Bayes algorithm( Train the Machine ) to Create:
+from sklearn.naive_bayes import GaussianNB
+model = GaussianNB()
+model.fit(X_train, y_train)
+ 
+#Predict the y_pred for all values of train_x and test_x:
+y_pred = model.predict(X_test)
+model.score(X_test,y_test)
+
+from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
+print(accuracy_score(y_test, y_pred))
+
+#Evaluate the performance of Model for train_y and test_y:
+cm = confusion_matrix(y_test, y_pred)
+disp = ConfusionMatrixDisplay(confusion_matrix = cm)
+print("Confusion matrix:")
+print(cm)
+
+disp.plot()
+plt.show()
+
+def get_confusion_matrix_values(y_true, y_pred):
+    cm = confusion_matrix(y_true, y_pred)
+    return(cm[0][0], cm[0][1], cm[1][0], cm[1][1])
+
+TP, FP, FN, TN = get_confusion_matrix_values(y_test, y_pred)
+print("TP: ", TP)
+print("FP: ", FP)
+print("FN: ", FN)
+print("TN: ", TN)
+
+print("The Accuracy is ", (TP+TN)/(TP+TN+FP+FN))
+print("The precision is ", TP/(TP+FP))
+print("The recall is ", TP/(TP+FN))
+
+1.Naïve Bayes Classifier can be used for Classification of categorical data.
+2.F-measure
+It is hard to compare classification models which have low precision and high recall or vice versa.
+F-measure = 2 * Recall * Precision / (Recall + Precision)

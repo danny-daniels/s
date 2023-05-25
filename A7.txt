@@ -1,0 +1,77 @@
+Title: Text Analytics
+Aim
+1. Extract Sample document and apply following document pre-processing methods:
+Tokenization, POS Tagging, stop words removal, Stemming and Lemmatization.
+2. Create representation of document by calculating Term Frequency and Inverse Document Frequency..
+
+import nltk       (Natural Language Toolkit)
+nltk.download('punkt')
+
+#Tokenization
+from nltk.tokenize import sent_tokenize
+text = """ I am SANKET """
+tokenized_text = sent_tokenize(text)
+print(tokenized_text)
+from nltk.tokenize import word_tokenize
+tokenized_text = word_tokenize(text)
+print(tokenized_text)
+import nltk
+nltk.download('stopwords')
+
+#Stop words
+from nltk.corpus import stopwords
+stop_words = set(stopwords.words("english"))
+print(stop_words)
+
+#Stemming
+text = """I am SANKET KSHIRSAGAR"""
+tokenized_sent = sent_tokenize(text)
+filtered_sent=[]
+for w in tokenized_sent:
+    if w not in stop_words:
+        filtered_sent.append(w)
+print("Tokenized Sentence:",tokenized_sent)
+print("Filtered Sentence:",filtered_sent)
+
+
+
+#Optional
+import pkg_resources
+import pip
+import sys
+installedPackages = {pkg.key for pkg in pkg_resources.working_set}
+required = {'nltk', 'spacy', 'textblob','gensim' }
+missing = required - installedPackages
+if missing:
+    !pip install nltk==3.4
+    !pip install textblob==0.15.3
+    !pip install gensim==3.8.2    
+    !pip install -U SpaCy==2.2.0
+    !python -m spacy download en_core_web_lg
+
+from nltk.stem import PorterStemmer
+from nltk.tokenize import sent_tokenize, word_tokenize
+
+ps = PorterStemmer()
+stemmed_words=[]
+for w in filtered_sent:
+    stemmed_words.append(ps.stem(w))
+print("Filtered Sentence:",filtered_sent)
+print("Stemmed Sentence:",stemmed_words)
+
+
+#Lemmatization
+text = "This world has a lot of faces "
+from textblob import Word
+parsed_data= TextBlob(text).words
+parsed_data
+
+#POS Tagging
+text = 'My Name Is Sanket'
+TextBlob(text).tags
+
+1.Tokenization: The process of breaking down a text paragraph into smaller words or sentence is called Tokenization.
+2.Stopwords: considered as noise in the text.
+3.Stemming: Convert capital letter In small letter 
+4.Lemmatization: make the word list 
+5.POS Tagging: Part Of Speech  it find the noun pronoun  verb

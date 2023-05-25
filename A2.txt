@@ -1,0 +1,72 @@
+Title: Create an “Academic performance” dataset of students and perform the given
+operations using Python.
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+
+data=pd.read_csv("stud_db.csv")
+df=pd.DataFrame(data)
+df
+df.info()
+df.describe()
+df.head(10)
+
+#Filling Null Values
+df['DSBDA'] = df['DSBDA'].fillna(df['DSBDA'].mean())
+df['AI'] = df['AI'].fillna(df['AI'].mean())
+df['WT'] = df['WT'].fillna(df['WT'].mean())
+df['Total'] = df['Total'].fillna(df['Total'].mean())
+df['Average'] = df['Average'].fillna(df['Average'].mean())
+df.head(5)
+
+#BoxPlot Method
+sns.boxplot(df['Age'])
+
+#Scatter Plot Method
+x=df.Age
+y=df.RollNo
+plt.scatter(x,y,c="Green",s=200)
+plt.show()
+
+#Z-score Method
+data=df.Age
+m=np.mean(data)
+sd=np.std(data)
+print("Mean is :",m)
+print("Standard Deviation is:",sd)
+
+threshold = 3
+outlier = []
+for i in data:
+    z = (i-m)/sd
+    if z > threshold:
+        outlier.append(i)
+print('Outlier in dataset is', outlier)
+
+#IQR (Inter Quartile Range)
+data=np.sort(df.Age)
+Q1 = np.percentile(data, 25, interpolation = 'midpoint') 
+Q2 = np.percentile(data, 50, interpolation = 'midpoint') 
+Q3 = np.percentile(data, 75, interpolation = 'midpoint') 
+print('Q1 25 percentile of the given data is, ', Q1)
+print('Q1 50 percentile of the given data is, ', Q2)
+print('Q1 75 percentile of the given data is, ', Q3)
+IQR = Q3 - Q1
+print('Interquartile range is', IQR)
+#Removing the Outliers
+df.drop(10, inplace = True)
+df
+
+Theory
+1.Boxplot method
+It captures the summary of the data effectively and efficiently with only a simple box
+2.Scatter Plot Method
+It is used when you have paired numerical data, or when your dependent variable has multiple values for each reading independent variable, or when trying to determine the relationship between the two variables.
+3.Z-score Method:
+It is also called a standard score. This value/score helps to understand that how far is the data point from the mean. And after setting up a threshold value one can utilize z score values of data points to define the outliers
+4.IQR:
+Inter Quartile Range approach to finding the outliers is the most commonly used and most trusted approach used in the research field
+5.MinMax Scaler It just scales all the data between 0 and 1.
+6.Standard Scaler scales the values such that the mean is 0 and the standard deviation is 1
+7.Log Transform convert a skewed distribution to a normal distribution

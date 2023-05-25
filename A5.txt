@@ -1,0 +1,92 @@
+Title:
+Implement logistic regression using Python/R to perform classification on
+Social_Network_Ads.csv dataset.
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+dataset =pd.read_csv('Social_Network_Ads.csv')
+df=pd.DataFrame(dataset)
+df
+df.head()
+
+#X and Y define  
+X = df.iloc[:,[2,3]].values
+y = df.iloc[:,4].values
+print(X[:3,:])
+print('-'*15)
+print(y[:3])
+
+#splitting dataset into traning set and testing set 
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.25, random_state = 0)
+print(X_train[:3])
+print('-'*15)
+print(y_train[:3])
+print(X_test[:3])
+print('-'*15)
+print(y_test[:3])
+
+#feature scaling
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+print(X_train[:3])
+print('-'*15)
+print(X_test[:3])
+#Fitting Logistic Regression Model 
+from sklearn.linear_model import LogisticRegression
+classifier = LogisticRegression(random_state = 0)
+classifier.fit(X_train, y_train)
+# Predicting the Test set results
+y_pred = classifier.predict(X_test)
+print(y_pred)
+
+# Making the Confusion Matrix
+from sklearn.metrics import confusion_matrix,classification_report
+cm = confusion_matrix(y_test, y_pred)
+cl_report=classification_report(y_test,y_pred)
+print(cm)
+print(cl_report)
+
+TP = cm[1,1]     # True Positive 
+TN = cm[0,0]     # True Negatives
+FP = cm[0,1]      # False Nositives
+FN = cm[1,0]      # False Negatives
+print(TP)
+print(TN)
+print(FP)
+print(FN)
+#Precision
+print(TP/TP+FP)
+#Recall
+print(TP/TP+FN)
+#Accuracy
+print(TP+TN/TP+FP+TN+FN)
+
+
+1.Regression:  estimating the relationships between a dependent variable and one or more independent variables
+2.Dependent variable: target variable which we are trying to predict.
+3.Independent variables: a variable that stands alone and isn't changed by the other variables
+4.logistic Regression: estimates the probability of an event occurring, such as voted or didn't vote
+5.Precision: Out of all the positive predicted, what percentage is truly positive.
+Formula= TP/TP+FP
+The precision value lies between 0 and 1.
+6.Recall: Out of the total positive, what percentage are predicted positive.
+Formula=TP/TP+FN
+7.Accuracy: it is correct prediction and it tells overall correctness
+Formula=TP+TN/TP+FP+TN+FN
+
+8.confusion matrix:  used for finding the errors in prediction              
+                                            Actual
+                            Positive             Negative
+              Positive        TP                    FP
+Predicted    
+              Negative       FN                     TN
+
+9.True Positive: predicted positive and it’s true
+10.True Negative: predicted negative and it’s true.
+11.False Positive: predicted positive and it’s false.
+12.False Negative: predicted negative and it’s false
+
