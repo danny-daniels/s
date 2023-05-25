@@ -1,9 +1,11 @@
-
+Hadoop -is an open source framework that is used to store and process large datasets ,based on Java ,uses distributed storage and parallel processing 
+   
 In pandas Axis=0 refer as row and axis=1 refer as column
 
-Matplotlib- it is library used for creating static and interactive visualizations
-seaborn- data visualization library
+Matplotlib- creating static and animated visualizations
+seaborn- data visualization library  
 Pandas – It is used for working with datasets, it has functions such as analyzing,cleaning, exploring and manipulating data
+numpy- used for working with array
 Scikit-learn - open source data analysis library
 
 cleaning data:removing incorrect data
@@ -13,16 +15,15 @@ Data Normalization -  Process of recognizing data within the database
 
 DataFrame - 2-dimensional data structure that can store different types  of data
 
-1.Reshaping data -in the Variable column, we can reshape the data by categorizing them into
-different numbers.
+1.Reshaping data -we can reshape the data by categorizing them into different numbers.
 2.Merge operation- is used to merge raw data and into the desired format.
 3.Filtering data-Some times datasets are comprised of unwanted rows or columns which are
 required to be removed or filtered
 
-1.Boxplot method-It captures the summary of the data effectively and efficiently with only a simple box
-2.Scatter Plot Method-It is used when you have paired numerical data, or when your dependent variable has multiple values for each reading independent variable, or when trying to determine the relationship between the two variables.
-3.Z-score Method-It is also called a standard score. This value/score helps to understand that how far is the data point from the mean. And after setting up a threshold value one can utilize z score values of data points to define the outliers
-4.IQR-Inter Quartile Range approach to finding the outliers is the most commonly used and most trusted approach used in the research field
+1.Boxplot method-display the distribution of the categorical data in the form of quartiles.
+2.Scatter Plot Method- determine the relationship between the two variables.
+3.Z-score Method-It is also called a standard score. This value/score helps to understand that how far is the data point from the mean. And after setting up a threshold value one can utilize z score values of data points to define the outliers        #outliers=observations
+4.IQR-Inter Quartile Range approach to finding the outliers  
 5.MinMax Scaler- It just scales all the data between 0 and 1.
 6.Standard Scaler- scales the values such that the mean is 0 and the standard deviation is 1
 7.Log Transform- convert a skewed distribution to a normal distribution
@@ -31,7 +32,7 @@ required to be removed or filtered
 2.Mean-sum of all observations divided by the number of observations.
 3.Mode-most frequently occurring value in your data
 4.Median-middle value of a data.
-5.Standard Deviation -measure of how spread out numbers are,square root of Variance
+5.Standard Deviation -measure of how spread the data,square root of Variance
 6.Varience -average of the squared differences from the Mean
 
 1.Linear regression: used to predict the value of a variable based on the value of another variable
@@ -40,7 +41,7 @@ required to be removed or filtered
 1.Regression: estimating the relationships between a dependent variable and one or 
 more independent variables
 2.Dependent variable: target variable which we are trying to predict.
-3.Independent variables: a variable that stands alone and isn't changed by the other variables
+3.Independent variables: a variable that stands alone and isn't changed by the other variables , predict changes in the dependant variable
 4.logistic Regression: estimates the probability of an event occurring, such as voted or didn't vote
 5.Precision: Out of all the positive predicted, what percentage is truly positive.
 Formula= TP/TP+FP
@@ -51,14 +52,14 @@ Formula=TP/TP+FN
 Formula=TP+TN/TP+FP+TN+FN
 8.confusion matrix: used for finding the errors in prediction 
                             Actual
-                   Positive        Negative
-        Positive      TP              FP
+                   Positive         Negative
+        Positive      TP               FP
 Predicted 
-        Negative     FN               TN
-9.True Positive: predicted positive and it’s true
-10.True Negative: predicted negative and it’s true.
-11.False Positive: predicted positive and it’s false.
-12.False Negative: predicted negative and it’s false.
+        Negative      FN               TN
+9. True Positive: predicted positive and it’s true
+10.True Negative: predicted negative and it’s truenb 
+11.False Positive: predicted positive but it’s false.(Type 1 error)
+12.False Negative: predicted negative but it’s false.(Type 2 error)
 
 1.Naïve Bayes Classifier can be used for Classification of categorical data
 
@@ -71,7 +72,7 @@ Predicted
 
 A. Distribution Plots
 a. Dist-Plot- represents the univariate analysis
-b. Joint Plot- represents the biivariate analysis
+b. Joint Plot- represents the bg ivariate analysis
 d. Rug Plot- draw small bars along the x-axis for each point
 
 B. Categorical Plots
@@ -85,11 +86,11 @@ a. Strip Plot- draws a scatter plot
 b. Swarm Plot- combination of the strip and the violin plots.
 
 D. Matrix Plots
-a. Heat Map-2d representation of data
-b. Cluster Map-
+a. Heat Map-2d representation of data using colors
+b. Cluster Map-hirarchically clustered heat map
 
-1.scatter -plot how two variables relate to each other
-2.Pie Chart: same as the countplot, gives additional info about the percentage
-3.Histogram: value distribution plot of numerical columns.
+1.scatter plot- how two variables relate to each other
+2.Pie Chart- same as the countplot, gives additional info about the percentage
+3.Histogram- value distribution plot of numerical columns.
 4.Scatter Plot: To plot relationship between two numerical variables
 5.Cluster map: understand the relationship between two categorical variables
