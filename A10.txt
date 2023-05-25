@@ -28,7 +28,9 @@ sns.boxplot(df['petal_length'])
 sns.boxplot(df['petal_width'])
 
 #Compare distributions and identify outliers.
-sns.boxplot(df['sepal_length'], df['species'])
-sns.boxplot(df['petal_length'], df['species'])
+sns.boxplot(x='sepal_length', y='species', data=df)
+plt.show()
+sns.boxplot(x='petal_length', y='species', data=df)
+plt.show()
 
 Conclusion: In this assignment, we covered how to plot boxplot and Histogram on iris dataset. Also studied how to generate inference from it.
